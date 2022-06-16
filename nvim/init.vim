@@ -1,10 +1,15 @@
-" plugin management
 call plug#begin('~/.vim/plugged')
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'preservim/nerdtree'
 Plug 'mbbill/undotree'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tpope/vim-commentary'
+
+" colorschemes
+Plug 'haystackandroid/rusticated'
+Plug 'morhetz/gruvbox'
 call plug#end()
+
 
 " key remappings go here
 au filetype go inoremap <buffer> . .<C-x><C-o>
@@ -20,7 +25,13 @@ nnoremap <C-q> :q<CR>
 nnoremap <C-n> :NERDTree<CR>
 
 " colorschemes go here
-colorscheme sunbather
+if strftime("%H") < 17
+	let g:gruvbox_contrast_dark = "hard"
+	colorscheme gruvbox
+else
+	colorscheme sunbather
+endif
+
 
 " updatetime changes for git gutter
 set updatetime=100
@@ -38,3 +49,6 @@ inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<Tab>" :
       \ coc#refresh()
+
+set tabstop=4
+set shiftwidth=4

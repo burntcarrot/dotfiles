@@ -22,6 +22,13 @@ lvim.leader = "space"
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<C-q>"] = ":q<cr>"
 
+vim.cmd([[
+  nnoremap <C-Z> u
+  nnoremap <C-Y> <C-R>
+  inoremap <C-Z> <C-O>u
+  inoremap <C-Y> <C-O><C-R>
+]])
+
 -- unmap a default keymapping
 -- vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping
